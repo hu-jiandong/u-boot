@@ -84,6 +84,9 @@
 	func(DHCP, dhcp, na)
 #endif
 
+#define DFU_ALT_INFO \
+	"dfu_alt_info=boot raw 0x1 0x1fff\0"
+
 #include <config_distro_bootcmd.h>
 
 #ifndef CFG_EXTRA_ENV_SETTINGS
@@ -100,6 +103,7 @@
 	"fdtoverlay_addr_r=0x01000000\0" \
 	"ramdisk_addr_r=0x13000000\0" \
 	"fdtfile=amlogic/" CONFIG_DEFAULT_DEVICE_TREE ".dtb\0" \
+	DFU_ALT_INFO \
 	BOOTENV
 #endif
 
