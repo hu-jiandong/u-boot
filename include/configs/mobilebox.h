@@ -91,6 +91,14 @@
 
 #include <config_distro_bootcmd.h>
 
+#define BOOT_SETTING \
+	"root=mmcblk1p2\0" \
+	"bootcmd=" \
+		"setenv bootargs \"root=/dev/$root rw rootwait\"; " \
+		"load mmc 2:1 $kernel_addr_r Image; " \
+		"load mmc 2:1 $fdt_addr_r mobilebox.dtb; " \
+		"booti $kernel_addr_r - $fdt_addr_r\0"
+
 #ifndef CFG_EXTRA_ENV_SETTINGS
 #define CFG_EXTRA_ENV_SETTINGS \
 	"stdin=" STDIN_CFG "\0" \
@@ -106,7 +114,7 @@
 	"ramdisk_addr_r=0x13000000\0" \
 	"fdtfile=amlogic/" CONFIG_DEFAULT_DEVICE_TREE ".dtb\0" \
 	DFU_ALT_INFO \
-	BOOTENV
+	BOOT_SETTING
 #endif
 
 
