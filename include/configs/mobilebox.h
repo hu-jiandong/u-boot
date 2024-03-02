@@ -87,7 +87,8 @@
 #define DFU_ALT_INFO \
 	"dfu_alt_info=" \
 		"emmc raw 0x0 0x800000; " \
-		"boot raw 0x1 0x1fff\0"
+		"boot raw 0x1 0x1fff;" \
+		"env raw 0x1800 0x10\0"
 
 #include <config_distro_bootcmd.h>
 
